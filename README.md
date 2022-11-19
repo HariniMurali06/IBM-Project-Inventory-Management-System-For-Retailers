@@ -33,3 +33,13 @@ Team ID : **PNT2022TMID03825**
 ## 🏗️Technical Architecture :
 ![image](https://drive.google.com/uc?export=view&id=1y83UOHrW-O5BODyIMWtL-9UWkP8KlMUS)
 ![----------------------------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## 🎞️Demo Video :
+
+https://user-images.githubusercontent.com/54319804/202854517-930266c2-0b90-4ab6-a84e-7c6db9c71dd0.mp4
+![----------------------------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## 🌐Link :
+Website deployed using kubernetes.
+Hosted at: http://159.122.178.157:30023/ 
+
