@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/signin.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .page-head {
+            padding-top: 40px;
+            text-align: center;
+            color: rgb(41, 174, 41);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-transparent mb-4">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a style="color: black; font-size: 17px; font-weight: 700; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+                            href="{{ url_for('.dashboard', username=username) }}" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color: black; font-size: 17px; font-weight: 700; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 30px;"
+                            href="{{ url_for('.logout') }}" class="nav-link">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="heading">
+        <div class="page-head">
+            <h1>Add a Product</h1>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top:45px; margin-left: 500px;" class="form">
+        <form method="POST" style="margin-right:500px;">
+            {% if error %}
+            <label style="color:red;">{{error}}</label>
+            {% endif %}
+            <table>
+                <tr>
+                    <td><label style="font-weight: bold;">Product ID</label></td>
+                    <td><input class="form-control" type="text" name="pid" id="pid" placeholder="Enter Product ID"
+                            required></td>
+                </tr>
+                <tr>
+                    <td><label style="font-weight: bold;">Product Name</label></td>
+                    <td><input class="form-control" type="text" name="pname" id="pname" placeholder="Enter Product Name"
+                            required></td>
+                </tr>
+                <tr>
+                    <td><label style="font-weight: bold;">Stock Amount</label></td>
+                    <td><input class="form-control" type="number" name="stock" id="stock"
+                            placeholder="Enter Stock Amount" required></td>
+                </tr>
+                <tr>
+                    <td><label style="font-weight: bold;">Price/ Unit (in INR)</label></td>
+                    <td><input class="form-control" type="number" name="unitprice" id="unitprice"
+                            placeholder="Enter Price per Unit" required></td>
+                </tr>
+                <tr>
+                    <td><input class="w-100 btn btn-lg btn-dark" type="reset" id="button" value="Reset"></td>
+                    <td><input class="w-100 btn btn-lg btn-dark" type="submit" id="button" value="Add Product"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  background-color: #f5f5f5;
+  background-image:url("\\static\\images\\backgr.png"); 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} 
+h1{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bolder;
+  font-size: 70px;
+  padding-top: 15rem;
+  color: rgb(41, 174, 41);
+}
+.lead{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: bolder;
+}
+.nav-link{
+    color: #f5f5f5;
+}
+
