@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        input[type="number"] {
+            padding: 2px;
+            width: 80px;
+        }
+
+        input[type="image"] {
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .page-head {
+            padding-top: 40px;
+            text-align: center;
+            color: rgb(41, 174, 41);
+        }
+
+        .addProd{
+            width:300px;
+            text-align: center;
+            padding:10px 10px;
+            text-decoration: none;
+            color:#fff;
+            background-color: rgb(53, 179, 53);
+            border-radius:20px;
+            border-style: solid;
+        }
+        .addProd:hover{
+            color:rgb(53, 179, 53);
+            border-color: rgb(53, 179, 53);
+            background-color: white;
+        }
+    </style>
+    <link href="/static/css/signin.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-transparent mb-4">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a style="color: black; font-size: 17px; font-weight: 700; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+                            href="{{ url_for('.dashboard', username=username) }}" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color: black; font-size: 17px; font-weight: 700; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 30px;"
+                            href="{{ url_for('.logout') }}" class="nav-link">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="heading">
+        <div class="page-head">
+            <h1>{{username}}'s Product Details</h1>
+        </div>
+    </div>
+    <div style="margin-left:50px;">
+        <br><br><br><br>
+        <a class="addProd" id="button" href="{{url_for('.addProducts', username=username)}}">Add a Product</a>
+
+            <!-- <a style="margin-bottom: 20px; color: black; font-size: 17px; font-weight: 700; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 30px; text-decoration: none;"
+            id="button" href="{{url_for('.addProducts', username=username)}}">Add a
+            Product</a> -->
+    </div>
+
+    <div style="margin-left:50px;">
+        <br>
+        <table style="background-color: white;" class="table table-hover table-responsive">
+            <tr>
+                <th><label class="info head">Product ID</label></th>
+                <th><label class="info head">Product Name</label></th>
+                <th><label class="info head">Available Stock</label></th>
+                <th><label class="info head"></label></th>
+                <th><label style="margin-left:-195px;" class="info head">Add Stock</label></th>
+                <!-- <th><label class="info head"></label></th> -->
+                <th><label class="info head">Remove Stock</label></th>
+                <th><label class="info head">Delete Stock</label></th>
+            </tr>
+            {% for product in products %}
+            <tr>
+                <td><label class="info">{{product['PRODUCTID']}}</label></td>
+                <td><label class="info">{{product['PRODUCTNAME']}}</label></td>
+                <td><label class="info">{{product['AVAILABLESTOCK']}}</label></td>
+                <form method='POST'
+                    action="{{url_for('.editProduct', username=username, action='add', pid=product['PRODUCTID'])}}">
+                    <td><label class="info">
+                            <input type="number" name="newstock" id="newstock" style="color:black;" required>
+                        </label></td>
+                    <td>
+                        <label style="margin-left: -90px;" class="info">
+                            <input type="image" src="../static/add.png" width="30" height="30">
+                        </label>
+                    </td>
+                </form>
+                </td>
+                <form method='POST'
+                    action="{{url_for('.editProduct', username=username, action='remove', pid=product['PRODUCTID'])}}">
+                    <td><label class="info">
+                            <input type="number" name="newstock" id="newstock" style="color:black;" required>
+                        </label></td>
+                    <td><label style="margin-left: -137px;" class="info">
+                            <input type="image" src="../static/remove.png" width="30" height="30">
+                        </label></td>
+                </form>
+                <td><label style="margin-left: -245px;" class="info">
+                        <a href="{{url_for('.deleteProduct', username=username, pid=product['PRODUCTID'])}}"
+                            style="text-decoration:none;"><img src="../static/delete.png" width="40" height="40"></a>
+                    </label>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

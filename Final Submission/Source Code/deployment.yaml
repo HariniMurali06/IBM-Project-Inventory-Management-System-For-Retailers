@@ -1,0 +1,20 @@
+ apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+   name: flask-node-deployment
+ spec:
+   replicas: 1
+   selector:
+     matchLabels:
+       app: flasknode
+   template:
+     metadata:
+       labels:
+         app: flasknode
+     spec:
+       containers:
+       - name: flasknode
+         image: icr.io/servo-in/imsfr@sha256:0a7ee0d2dbb7a092df1c5e850fe04fb1539b34bedac0ce21694f5057d5d5161c
+         imagePullPolicy: Always
+         ports:
+         - containerPort: 5000
